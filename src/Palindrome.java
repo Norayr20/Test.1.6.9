@@ -8,13 +8,15 @@ public class Palindrome {
     }
 
     public static boolean isPalindrome(String text) {
-        String cleanedText = text.replaceAll("[^a-zA-Z0-9]", "");
-        cleanedText = cleanedText.toLowerCase();
-        int length = cleanedText.length();
-        for (int a = 0; a < length / 2; a++) {
-            if (cleanedText.charAt(a) != cleanedText.charAt(length - a - 1)) {
+        String cleanText = text.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        int left = 0;
+        int right = cleanText.length() - 1;
+        while (left < right) {
+            if (cleanText.charAt(left) != cleanText.charAt(right)) {
                 return false;
             }
+            left++;
+            right--;
         }
         return true;
     }
